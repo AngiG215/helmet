@@ -1,23 +1,20 @@
 const express = require('express');
-const helmet = require('helmet');
 const app = express();
+const helmet = require('helmet');
 
-// 1. El desafío
+// 1. EL DESAFÍO (Tal cual lo pide la guía)
 app.use(helmet.hidePoweredBy());
 
-// 2. Esta ruta es la que usa freeCodeCamp para evaluarte
-// Si esta ruta falla o no responde, el test se queda "cargando"
-app.get("/_api/app-info", function (req, res) {
-  var stack = app._router.stack
-    .filter((s) => s.path === "" && s.name !== "bound dispatch")
-    .map((l) => l.name);
-  
-  res.json({ headers: res.getHeaders(), appStack: stack });
+app.get("/", function (request, response) {
+  response.send("Hello World - Helmet Activo");
 });
 
-// 3. Ruta principal
-app.get("/", function (req, res) {
-  res.send("Hello World - Helmet Activo");
+// Ruta que FCC usa para auditar tu código
+app.get("/_api/app-info", function(req, res) {
+  res.json({
+    headers: res.getHeaders(),
+    appStack: app._router.stack.map(layer => layer.name)
+  });
 });
 
 module.exports = app;
