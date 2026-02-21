@@ -2,8 +2,57 @@ const express = require('express');
 const app = express();
 const helmet = require('helmet');
 
-// 1. Solución al desafío: Ocultar X-Powered-By
 app.use(helmet.hidePoweredBy());
+// app.use(helmet());
+// ------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const api = require('./server.js');
 app.use(express.static('public'));
@@ -14,5 +63,5 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-// Esto permite que el verificador de freeCodeCamp lea tus middlewares
+// ESTA LÍNEA DEBE SER LA ÚLTIMA
 module.exports = app;
