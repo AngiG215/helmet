@@ -2,62 +2,13 @@ const express = require('express');
 const app = express();
 const helmet = require('helmet');
 
+// 1. La única tarea que pide freeCodeCamp
 app.use(helmet.hidePoweredBy());
-// app.use(helmet());
-// ------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ESTO DEBE IR DESPUÉS DE LA APP Y EL HELMET
+// 2. Ruta para que la página no salga en blanco
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-// ESTO ES LO QUE SOLUCIONA EL ERROR DE "STACK"
+// 3. ESTO ES VITAL: Exportar la app para que server.js la maneje
 module.exports = app;
