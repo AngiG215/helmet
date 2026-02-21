@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-
-// --- AÑADE ESTO ---
 const helmet = require('helmet');
 // app.use(helmet());
 // ------------------
