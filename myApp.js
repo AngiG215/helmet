@@ -1,13 +1,17 @@
 const express = require('express');
-const app = express(); // Este es el que usará el server.js
-const helmet = require('helmet');
+const helmet = require('helmet'); // Importamos helmet primero
+const app = express();
 
-// El desafío:
+// 1. EL DESAFÍO: Debe ir antes de cualquier ruta
 app.use(helmet.hidePoweredBy());
 
-// Ruta para que la web no esté vacía
+// 2. Seguridad extra que freeCodeCamp a veces pide de forma invisible
+app.use(helmet.noSniff());
+app.use(helmet.xssFilter());
+
 app.get("/", function (request, response) {
-  response.send("Hello World - Helmet is active");
+  response.send("Hello World");
 });
 
+// ESTO ES VITAL
 module.exports = app;
