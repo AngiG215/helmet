@@ -54,14 +54,10 @@ app.use(helmet.hidePoweredBy());
 
 
 
-const api = require('./server.js');
-app.use(express.static('public'));
-app.disable('strict-transport-security');
-app.use('/_api', api);
-
+// ESTO DEBE IR DESPUÉS DE LA APP Y EL HELMET
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-// ESTA LÍNEA DEBE SER LA ÚLTIMA
+// ESTO ES LO QUE SOLUCIONA EL ERROR DE "STACK"
 module.exports = app;
