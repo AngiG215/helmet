@@ -1,21 +1,20 @@
 const express = require('express');
-const helmet = require('helmet'); // Importar primero
+const helmet = require('helmet');
 const app = express();
 
-// 1. EL DESAFÍO: Esto es lo que busca el test
+// 1. El desafío principal
 app.use(helmet.hidePoweredBy());
 
-// 2. Ruta de información para freeCodeCamp (ESTO ES LO QUE FALTA)
-// El test necesita entrar aquí para confirmar que usaste Helmet
-app.get("/_api/app-info", function(req, res) {
+// 2. Ruta de ayuda para que el test no falle (Vital)
+app.get("/_api/app-info", (req, res) => {
   res.json({
     headers: res.getHeaders(),
-    appStack: app._router.stack.map(layer => layer.name)
+    appStack: app._router.stack.map(l => l.name)
   });
 });
 
-app.get("/", function (request, response) {
-  response.send("Hello World");
+app.get("/", (req, res) => {
+  res.send("Hello World - Helmet Activo");
 });
 
 module.exports = app;
