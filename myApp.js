@@ -3,8 +3,6 @@ const app = express();
 const helmet = require('helmet');
 
 app.use(helmet.hidePoweredBy());
-// app.use(helmet());
-// ------------------
 
 
 
@@ -62,9 +60,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-module.exports = app;
-
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Your app is listening on port ${port}`);
 });
+
+module.exports = app;
