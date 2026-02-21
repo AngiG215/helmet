@@ -5,7 +5,7 @@ const helmet = require('helmet');
 app.use(helmet.hidePoweredBy());
 
 app.get("/", (req, res) => {
-  res.send("Servidor funcionando");
+  res.send("Hello World");
 });
 
-module.exports = app; // <--- ESTO ES LO ÚNICO AL FINAL
+module.exports = app; // <--- Así y nada más
